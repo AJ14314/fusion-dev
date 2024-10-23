@@ -1,0 +1,13 @@
+1.
+docker run -d ^
+More?   --privileged ^
+More?   -p 8080:8080 ^
+More?   -p 50000:50000 ^
+More?   --name jenkins ^
+More?   -v C:\Jenkins:/var/jenkins_home ^
+More?   -v //var/run/docker.sock:/var/run/docker.sock ^
+More?   jenkins/jenkins:lts
+
+2. docekr logs -f jenkins
+
+d441a1ceedda45149b5ef296e2554b3c
