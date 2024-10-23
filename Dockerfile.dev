@@ -1,0 +1,26 @@
+# Base image from your private registry
+FROM node:20-alpine
+
+# Set npm registry to npmjs.org
+RUN npm config set registry https://registry.npmjs.org/
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json only (no package-lock.json to ensure it's recreated)
+COPY package.json ./
+
+# Remove any existing package-lock.json (if present) and run npm install with force
+RUN rm -f package-lock.json && npm install --force
+
+# Copy the rest of the application code
+COPY . .
+
+# Add execution permissions to all files recursively, or customize to specific directories/files
+RUN chmod -R +x /app
+
+# Expose the desired port (API)
+EXPOSE 1235
+
+# Start the API service
+CMD ["npm", "run", "start:api"]

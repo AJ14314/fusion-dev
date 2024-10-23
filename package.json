@@ -26,6 +26,11 @@
     "util": "^0.12.3"
   },
   "dependencies": {
+    "fusion": "^1.0.0-beta",
     "openai": "^4.28.4"
+  },
+  "scripts": {
+    "start:api": "ts-node ./modules/fusionconfig/index.ts api -d demo -u organisations --debug",
+    "start:ui": "cd ./modules/react/workbench && npm start"
   }
 }
